@@ -1,0 +1,6 @@
+---
+# defaults file for ansible-role_rsyslogclient
+
+syslog_host: syslog
+syslog_protocol: udp
+syslog_port: 514

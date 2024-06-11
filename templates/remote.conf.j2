@@ -1,0 +1,7 @@
+# File managed by Ansible
+{% if syslog_protocol == 'tcp' -%}
+  {% set prefix = '@@' -%}
+{% else -%}
+  {% set prefix = '@' -%}
+{% endif %}
+*.*		{{ prefix }}{{ syslog_host }}:{{ syslog_port }}

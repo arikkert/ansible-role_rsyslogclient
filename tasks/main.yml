@@ -1,0 +1,19 @@
+---
+# tasks file for ansible-role_rsyslogclient
+
+- name: Ensure selinux allows logging to (remote) port {{ syslog_port }}
+  community.general.seport:
+    ports: "{{ syslog_port }}"
+    proto: "{{ syslog_protocol }}"
+    setype: syslogd_port_t
+    state: present
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
+
+- name: Ensure rsyslog is configured
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: /etc/rsyslog.d/{{ item }}
+    mode: "0644"
+  notify: Restart rsyslog
+  loop:
+    - remote.conf
