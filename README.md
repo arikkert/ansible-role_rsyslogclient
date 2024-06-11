@@ -12,7 +12,7 @@ rsyslog is already installed (as client) on target server
 Role Variables
 --------------
 
-- *syslog_host*: rsyslog server, defaults to rsyslog
+- *syslog_host*: syslog server, defaults to syslog
 - *syslog_port*: remote port, defaults to 514
 - *syslog_protcocol*: tcp/udp, defaults to udp
 
